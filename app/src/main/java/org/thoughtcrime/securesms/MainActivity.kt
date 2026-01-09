@@ -331,8 +331,9 @@ class MainActivity : PassphraseRequiredActivity(), VoiceNoteMediaControllerOwner
 
       val isActionModeActive = mainToolbarState.mode == MainToolbarMode.ACTION_MODE
       val isSearchModeActive = mainToolbarState.mode == MainToolbarMode.SEARCH
-      val isNavigationRailVisible = mainToolbarState.mode != MainToolbarMode.SEARCH
-      val isNavigationBarVisible = mainToolbarState.mode == MainToolbarMode.FULL
+      // Disable Navigation Rail + Bar for WearOS
+      val isNavigationRailVisible = false; // mainToolbarState.mode != MainToolbarMode.SEARCH
+      val isNavigationBarVisible = false; //mainToolbarState.mode == MainToolbarMode.FULL
       val isBackHandlerEnabled = mainToolbarState.destination != MainNavigationListLocation.CHATS && !isActionModeActive && !isSearchModeActive
 
       BackHandler(enabled = isBackHandlerEnabled) {

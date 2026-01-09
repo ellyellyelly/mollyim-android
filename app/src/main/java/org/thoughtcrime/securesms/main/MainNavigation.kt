@@ -107,11 +107,13 @@ fun MainNavigationBar(
   NavigationBar(
     containerColor = colorAttribute(R.attr.navbar_container_color),
     contentColor = MaterialTheme.colorScheme.onSurface,
-    modifier = Modifier.height(if (state.compact) 48.dp else 80.dp),
+    modifier = Modifier.height(if (state.compact) 24.dp else 80.dp),
     windowInsets = WindowInsets(0, 0, 0, 0)
   ) {
     val entries = remember(state.isStoriesFeatureEnabled) {
-      if (state.isStoriesFeatureEnabled) {
+      // Programmatically disable Stories on WearOS
+      // To-Do: Maybe try making it look better on small screen?
+      if (false && state.isStoriesFeatureEnabled) {
         MainNavigationListLocation.entries.filterNot { it == MainNavigationListLocation.ARCHIVE }
       } else {
         MainNavigationListLocation.entries.filterNot { it == MainNavigationListLocation.STORIES || it == MainNavigationListLocation.ARCHIVE }

@@ -352,7 +352,8 @@ private fun PrimaryToolbar(
       Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
-          .padding(start = 20.dp, end = 16.dp)
+          .padding(start = 30.dp, end = 30.dp)
+          .fillMaxWidth()
           .size(48.dp)
       ) {
         AvatarImage(
@@ -394,10 +395,10 @@ private fun PrimaryToolbar(
       }
     },
     title = {
-      Text(
+      /*Text(
         text = stringResource(R.string.app_name)
-      )
-    },
+      )*/
+    }/*,
     actions = {
       NotificationProfileAction(state, callback)
       ProxyAction(state, callback)
@@ -433,7 +434,7 @@ private fun PrimaryToolbar(
           MainNavigationListLocation.STORIES -> StoryDropDownItems(callback, dismiss)
         }
       }
-    }
+    }*/
   )
 }
 
