@@ -89,12 +89,12 @@ fun MainFloatingActionButtons(
       .padding(ACTION_BUTTON_SPACING)
       .height(boxHeightDp)
   ) {
-    SecondaryActionButton(
+    /*SecondaryActionButton(
       destination = destination,
       boxHeightPx = boxHeightPx,
       onCameraClick = callback::onCameraClick,
       elevation = shadowElevation
-    )
+    )*/
 
     Box(
       modifier = Modifier.align(primaryButtonAlignment)
