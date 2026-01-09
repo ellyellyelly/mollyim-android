@@ -33,6 +33,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import org.signal.core.ui.compose.DayNightPreviews
 import org.signal.core.ui.compose.Previews
@@ -80,20 +81,21 @@ fun RegistrationScreenTitleSubtitle(
 ) {
   Text(
     text = title,
-    style = MaterialTheme.typography.headlineMedium,
+    style = MaterialTheme.typography.labelMedium,
+    textAlign = TextAlign.Center,
     modifier = Modifier.fillMaxWidth()
   )
 
   if (subtitle != null) {
     Text(
       text = subtitle,
-      style = MaterialTheme.typography.bodyLarge,
+      style = MaterialTheme.typography.bodySmall,
       color = MaterialTheme.colorScheme.onSurfaceVariant,
       modifier = Modifier.padding(top = 16.dp)
     )
   }
 
-  Spacer(modifier = Modifier.height(40.dp))
+  Spacer(modifier = Modifier.height(20.dp))
 }
 
 /**

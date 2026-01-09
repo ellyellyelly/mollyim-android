@@ -144,8 +144,8 @@ private fun RegisterLinkDeviceQrScreen(
     }
   ) {
     FlowRow(
-      horizontalArrangement = Arrangement.spacedBy(space = 48.dp, alignment = Alignment.CenterHorizontally),
-      verticalArrangement = Arrangement.spacedBy(space = 48.dp),
+      horizontalArrangement = Arrangement.spacedBy(space = 4.dp, alignment = Alignment.CenterHorizontally),
+      verticalArrangement = Arrangement.spacedBy(space = 4.dp),
       modifier = Modifier
         .fillMaxWidth()
         .horizontalGutters()
@@ -156,7 +156,7 @@ private fun RegisterLinkDeviceQrScreen(
           .aspectRatio(1f)
           .clip(RoundedCornerShape(24.dp))
           .background(SignalTheme.colors.colorSurface5)
-          .padding(40.dp)
+          .padding(8.dp)
       ) {
         SignalTheme(isDarkMode = false) {
           Box(

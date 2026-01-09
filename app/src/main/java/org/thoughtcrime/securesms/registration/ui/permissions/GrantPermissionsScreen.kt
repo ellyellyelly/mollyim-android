@@ -44,9 +44,9 @@ fun GrantPermissionsScreen(
     bottomContent = {
       Row(
         horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp)
       ) {
-        TextButton(
+        /*TextButton(
           modifier = Modifier.weight(weight = 1f, fill = false),
           onClick = onNotNowClicked
         ) {
@@ -55,9 +55,10 @@ fun GrantPermissionsScreen(
           )
         }
 
-        Spacer(modifier = Modifier.size(24.dp))
+        Spacer(modifier = Modifier.size(16.dp))*/
 
         Buttons.LargeTonal(
+          modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
           onClick = onNextClicked
         ) {
           Text(
@@ -114,28 +115,29 @@ fun PermissionRow(
   title: String,
   subtitle: String
 ) {
-  Row(modifier = Modifier.padding(bottom = 32.dp)) {
+  Row(modifier = Modifier.padding(bottom = 8.dp)) {
     Image(
       imageVector = imageVector,
       contentDescription = null,
-      modifier = Modifier.size(48.dp)
+      modifier = Modifier.size(32.dp)
     )
 
-    Spacer(modifier = Modifier.size(16.dp))
+    Spacer(modifier = Modifier.size(8.dp))
 
     Column {
       Text(
         text = title,
-        style = MaterialTheme.typography.titleSmall
+        style = MaterialTheme.typography.labelMedium
       )
 
       Text(
         text = subtitle,
+        style = MaterialTheme.typography.bodySmall,
         color = MaterialTheme.colorScheme.onSurfaceVariant
       )
     }
 
-    Spacer(modifier = Modifier.size(32.dp))
+    Spacer(modifier = Modifier.size(8.dp))
   }
 }
 
