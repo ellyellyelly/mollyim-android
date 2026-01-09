@@ -12,11 +12,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+        <!--TextView
             android:id="@+id/blurb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="sans-serif-light"
             android:gravity="center_horizontal"
             android:paddingStart="20dp"
@@ -25,9 +25,9 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@android:color/white"
             android:textIsSelectable="false"
-            android:textSize="@dimen/onboarding_title_size" />
+            android:textSize="@dimen/onboarding_title_size" /-->
 
-        <FrameLayout
+        <!--FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -46,25 +46,25 @@
                 android:layout_gravity="center"
                 android:tint="@color/core_ultramarine"
                 app:srcCompat="@drawable/ic_lock" />
-        </FrameLayout>
+        </FrameLayout-->
 
-        <TextView
+        <!--TextView
             android:id="@+id/subblurb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:gravity="center_horizontal"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
             android:text="@string/PassphraseCreateActivity_now_you_can_set_a_passphrase_to_encrypt_the_database"
             android:textColor="@color/core_white"
             android:textIsSelectable="false"
-            android:textSize="18sp" />
+            android:textSize="10sp" /-->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="40dp"
             android:fontFamily="sans-serif-light"
             android:gravity="center_horizontal"
             android:paddingStart="20dp"
@@ -72,15 +72,17 @@
             android:text="@string/PassphraseCreateActivity_require_passphrase_to_unlock_molly"
             android:textColor="@color/core_white"
             android:textIsSelectable="false"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/yes_button"
             style="@style/Signal.Widget.Button.Large.Primary"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:text="@string/PassphraseCreateActivity_turn_on_database_encryption"
             android:textColor="@color/core_ultramarine"
             app:backgroundTint="@color/core_white" />
@@ -88,10 +90,12 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/no_button"
             style="@style/Signal.Widget.Button.Medium.Primary"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="8dp"
             android:text="@string/RatingManager_no_thanks"
             android:textColor="@color/core_white"
             app:backgroundTint="@color/core_ultramarine_dark" />

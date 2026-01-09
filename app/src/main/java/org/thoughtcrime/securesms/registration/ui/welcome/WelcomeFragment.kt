@@ -51,13 +51,14 @@ class WelcomeFragment : LoggingFragment(R.layout.fragment_registration_welcome_v
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    setDebugLogSubmitMultiTapView(binding.image)
+    //setDebugLogSubmitMultiTapView(binding.image)
     setDebugLogSubmitMultiTapView(binding.title)
 
-    binding.welcomeContinueButton.setOnClickListener { onContinueClicked() }
+    //binding.welcomeContinueButton.setOnClickListener { onContinueClicked() }
     binding.welcomeTermsButton.setOnClickListener { onTermsClicked() }
-    binding.welcomeTransferOrRestore.setOnClickListener { onRestoreOrTransferClicked() }
-    binding.welcomeTransferOrRestore.visible = !sharedViewModel.isReregister
+
+    /*binding.welcomeTransferOrRestore.setOnClickListener { onRestoreOrTransferClicked() }
+    binding.welcomeTransferOrRestore.visible = !sharedViewModel.isReregister*/
 
     binding.link.setOnClickListener { onLinkDeviceClicked() }
 
