@@ -2,6 +2,7 @@ package org.thoughtcrime.securesms.util;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.view.ContextThemeWrapper;
@@ -82,10 +83,11 @@ public class DynamicTheme {
   public static void setDefaultDayNightMode(@NonNull Context context) {
     Theme theme = Theme.deserialize(TextSecurePreferences.getTheme(context));
 
-    if (theme == Theme.SYSTEM) {
+    // Force watch to use dark theme by default
+    if (theme == Theme.SYSTEM && !context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
       Log.d(TAG, "Setting to follow system expecting: " + ConfigurationUtil.getNightModeConfiguration(context.getApplicationContext()));
       AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-    } else if (DynamicTheme.isDarkTheme(context)) {
+    } else if (DynamicTheme.isDarkTheme(context) || context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
       Log.d(TAG, "Setting to always night");
       AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
     } else {

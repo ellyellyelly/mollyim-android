@@ -1560,8 +1560,7 @@ public class ConversationListFragment extends MainFragment implements Conversati
           viewHolder instanceof ConversationListAdapter.EmptyFolderViewHolder ||
           mainToolbarViewModel.isInActionMode() ||
           viewHolder.itemView.isSelected() ||
-          activeAdapter == searchAdapter ||
-          requireContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH))
+          activeAdapter == searchAdapter)
       {
         return 0;
       }
