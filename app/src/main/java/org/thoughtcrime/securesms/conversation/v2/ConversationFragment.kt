@@ -15,6 +15,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.PorterDuff
@@ -75,7 +76,6 @@ import androidx.recyclerview.widget.ConversationLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.android.material.R as MaterialR
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -221,6 +221,7 @@ import org.thoughtcrime.securesms.conversation.v2.groups.ConversationGroupViewMo
 import org.thoughtcrime.securesms.conversation.v2.items.ChatColorsDrawable
 import org.thoughtcrime.securesms.conversation.v2.items.InteractiveConversationElement
 import org.thoughtcrime.securesms.conversation.v2.keyboard.AttachmentKeyboardFragment
+import org.thoughtcrime.securesms.conversationlist.ConversationListFragment
 import org.thoughtcrime.securesms.database.AttachmentTable
 import org.thoughtcrime.securesms.database.DraftTable
 import org.thoughtcrime.securesms.database.model.IdentityRecord
@@ -371,6 +372,7 @@ import java.util.Optional
 import java.util.concurrent.ExecutionException
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.milliseconds
+import com.google.android.material.R as MaterialR
 
 /**
  * A single unified fragment for Conversations.
@@ -2801,7 +2803,9 @@ class ConversationFragment :
     override fun isSwipeAvailable(conversationMessage: ConversationMessage): Boolean {
       val recipient = viewModel.recipientSnapshot ?: return false
 
-      return !isActionModeStarted() &&
+      // To-Do: decide what to do with swipe besides disabling it
+      return !requireContext().packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH) &&
+        !isActionModeStarted() &&
         MenuState.canReplyToMessage(
           recipient,
           MenuState.isActionMessage(conversationMessage.messageRecord),
@@ -3483,6 +3487,11 @@ class ConversationFragment :
 
     override fun onItemLongClick(itemView: View, item: MultiselectPart) {
       Log.d(TAG, "onItemLongClick")
+      if (requireContext().packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH)) {
+        // To-Do: make context menu watch-friendly
+        Log.d(TAG, "Device is a watch, ignoring long click")
+        return
+      }
       if (isActionModeStarted()) {
         return
       }

@@ -7,7 +7,9 @@
     android:layout_height="wrap_content"
     android:background="?attr/signal_background_primary"
     android:clipChildren="false"
-    android:clipToPadding="false">
+    android:clipToPadding="false"
+    android:paddingHorizontal="24dp"
+    android:paddingBottom="8dp">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/input_panel_sticker_suggestion"
@@ -121,6 +123,12 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="edit_message_title,edit_message_thumbnail,quote_view,link_preview" />
 
+    <!-- Hide everything in a RelativeLayout so we don't have to adjust any logic-->
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone">
+
     <org.thoughtcrime.securesms.components.emoji.EmojiToggle
         android:id="@+id/emoji_toggle"
         android:layout_width="wrap_content"
@@ -131,11 +139,10 @@
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        app:layout_constraintBottom_toBottomOf="@id/compose_bubble"
-        app:layout_constraintStart_toStartOf="@id/compose_bubble"
-        app:layout_constraintTop_toBottomOf="@id/compose_bubble_top_elements"
         app:layout_constraintVertical_bias="1.0"
         app:tint="?attr/colorOnSurfaceVariant" />
+
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/embedded_text_editor_container"
@@ -143,7 +150,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@id/compose_bubble"
         app:layout_constraintEnd_toStartOf="@id/attachment_barrier"
-        app:layout_constraintStart_toEndOf="@id/emoji_toggle"
+        app:layout_constraintStart_toStartOf="@id/compose_bubble"
         android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/compose_bubble_top_elements">
 
@@ -182,6 +189,11 @@
         app:layout_constraintEnd_toEndOf="@id/compose_bubble"
         app:layout_constraintTop_toBottomOf="@id/compose_bubble_top_elements">
 
+        <!-- Hide everything in a RelativeLayout so we don't have to adjust any logic-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone">
         <ImageButton
             android:id="@+id/quick_camera_toggle"
             android:layout_width="24dp"
@@ -194,6 +206,7 @@
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_camera_24"
             app:tint="?attr/colorOnSurfaceVariant" />
+        </RelativeLayout>
 
         <org.thoughtcrime.securesms.components.MicrophoneRecorderView
             android:id="@+id/recorder_view"
@@ -233,28 +246,38 @@
             app:srcCompat="@drawable/ic_plus_24"
             app:tint="?attr/colorOnSurface" />
 
+
+
     </org.thoughtcrime.securesms.components.HidingLinearLayout>
 
-    <include
-        layout="@layout/recording_layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/compose_bubble"
-        app:layout_constraintEnd_toEndOf="@id/compose_bubble"
-        app:layout_constraintStart_toStartOf="@id/compose_bubble"
-        app:layout_constraintTop_toBottomOf="@id/compose_bubble_top_elements"
-        tools:visibility="gone" />
+        <include
+            layout="@layout/recording_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/compose_bubble"
+            app:layout_constraintEnd_toEndOf="@id/compose_bubble"
+            app:layout_constraintStart_toStartOf="@id/compose_bubble"
+            app:layout_constraintTop_toBottomOf="@id/compose_bubble_top_elements"
+            tools:visibility="gone" />
 
-    <org.thoughtcrime.securesms.conversation.VoiceNoteDraftView
-        android:id="@+id/voice_note_draft_view"
+        <org.thoughtcrime.securesms.conversation.VoiceNoteDraftView
+            android:id="@+id/voice_note_draft_view"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/conversation_compose_height"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/compose_bubble"
+            app:layout_constraintEnd_toEndOf="@id/compose_bubble"
+            app:layout_constraintStart_toStartOf="@id/compose_bubble"
+            app:layout_constraintTop_toBottomOf="@id/compose_bubble_top_elements"
+            tools:visibility="gone" />
+
+    <!-- Hide everything in a RelativeLayout so we don't have to adjust any logic-->
+    <RelativeLayout
         android:layout_width="0dp"
-        android:layout_height="@dimen/conversation_compose_height"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/compose_bubble"
-        app:layout_constraintEnd_toEndOf="@id/compose_bubble"
-        app:layout_constraintStart_toStartOf="@id/compose_bubble"
-        app:layout_constraintTop_toBottomOf="@id/compose_bubble_top_elements"
-        tools:visibility="gone" />
+        android:layout_height="0dp"
+        android:visibility="gone">
+    </RelativeLayout>
 
     <org.thoughtcrime.securesms.components.AnimatingToggle
         android:id="@+id/button_toggle"
@@ -280,6 +303,7 @@
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/symbol_plus_24"
             app:tint="@color/conversation_send_button_tint" />
+
 
         <ImageButton
             android:id="@+id/send_edit_button"

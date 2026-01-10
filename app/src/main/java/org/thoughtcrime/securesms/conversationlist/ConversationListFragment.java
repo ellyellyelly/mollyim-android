@@ -18,6 +18,7 @@ package org.thoughtcrime.securesms.conversationlist;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -1143,6 +1144,11 @@ public class ConversationListFragment extends MainFragment implements Conversati
 
   @Override
   public boolean onConversationLongClick(@NonNull Conversation conversation, @NonNull View view) {
+    if (getContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH)) {
+      Log.d(TAG, "Device is a watch, ignoring long click");
+      return true;
+    }
+
     if (list == null) {
       Log.w(TAG, "List is null, ignoring long click.");
       return true;
@@ -1554,7 +1560,8 @@ public class ConversationListFragment extends MainFragment implements Conversati
           viewHolder instanceof ConversationListAdapter.EmptyFolderViewHolder ||
           mainToolbarViewModel.isInActionMode() ||
           viewHolder.itemView.isSelected() ||
-          activeAdapter == searchAdapter)
+          activeAdapter == searchAdapter ||
+          requireContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH))
       {
         return 0;
       }
