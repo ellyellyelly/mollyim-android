@@ -289,7 +289,7 @@
         android:layout_marginEnd="14dp"
         android:layout_marginBottom="2dp"
         android:background="@drawable/circle_tintable"
-        app:layout_constraintBottom_toBottomOf="@id/compose_bubble"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         >
 

@@ -367,12 +367,9 @@ class RecipientBottomSheetDialogFragment : FixedRoundedCornerBottomSheetDialogFr
       }
     }
 
-    // disable avatar onClickListener for watches because small screen
-    if (true || !requireContext().packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH)) {
-      avatar.setOnClickListener {
-        dismiss()
-        viewModel.onAvatarClicked(requireActivity())
-      }
+    avatar.setOnClickListener {
+      dismiss()
+      viewModel.onAvatarClicked(requireActivity())
     }
 
 
