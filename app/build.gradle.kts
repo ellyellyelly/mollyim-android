@@ -159,7 +159,7 @@ android {
   }
 
   defaultConfig {
-    val sourceVersionNameWithRevision = "${canonicalVersionName}-${mollyRevision}"
+    val sourceVersionNameWithRevision = "${canonicalVersionName}-${mollyRevision}-wear"
 
     versionCode = (canonicalVersionCode * maxHotfixVersions) + mollyRevision + currentHotfixVersion
     versionName = if (ciEnabled) getCommitTag() else sourceVersionNameWithRevision
