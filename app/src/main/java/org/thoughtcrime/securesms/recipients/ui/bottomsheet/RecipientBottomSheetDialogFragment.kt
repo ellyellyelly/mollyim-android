@@ -7,6 +7,7 @@ import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
@@ -140,7 +141,12 @@ class RecipientBottomSheetDialogFragment : FixedRoundedCornerBottomSheetDialogFr
 
     lifecycleScope.launch {
       lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-        val recipient = viewModel.recipient.value
+        // skip straight to avatar menu if wearOS
+        if (requireContext().packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH)) {
+          dismiss()
+          viewModel.onAvatarClicked(requireActivity())
+        }
+          val recipient = viewModel.recipient.value
         if (recipient != null) {
           AvatarDownloadStateCache.forRecipient(recipient.id).collect {
             when (it) {
@@ -236,10 +242,14 @@ class RecipientBottomSheetDialogFragment : FixedRoundedCornerBottomSheetDialogFr
         }
 
         fullName.text = nameBuilder
-        fullName.setOnClickListener {
-          dismiss()
-          AboutSheet.create(recipient).show(getParentFragmentManager(), null)
+        // disable fullName onClickListener for watches because small screen
+        if (!requireContext().packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH)) {
+          fullName.setOnClickListener {
+            dismiss()
+            AboutSheet.create(recipient).show(getParentFragmentManager(), null)
+          }
         }
+
 
         nickname.visible = true
         nickname.setOnClickListener {
@@ -357,10 +367,14 @@ class RecipientBottomSheetDialogFragment : FixedRoundedCornerBottomSheetDialogFr
       }
     }
 
-    avatar.setOnClickListener {
-      dismiss()
-      viewModel.onAvatarClicked(requireActivity())
+    // disable avatar onClickListener for watches because small screen
+    if (true || !requireContext().packageManager.hasSystemFeature(PackageManager.FEATURE_WATCH)) {
+      avatar.setOnClickListener {
+        dismiss()
+        viewModel.onAvatarClicked(requireActivity())
+      }
     }
+
 
     blockButton.setOnClickListener { viewModel.onBlockClicked(requireActivity()) }
     unblockButton.setOnClickListener { viewModel.onUnblockClicked(requireActivity()) }
