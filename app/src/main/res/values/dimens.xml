@@ -5,7 +5,7 @@
   -->
 
 <resources>
-    <dimen name="signal_m3_toolbar_height">64dp</dimen>
+    <dimen name="signal_m3_toolbar_height">32dp</dimen>
 
     <dimen name="bottom_sheet_corner_size">18dp</dimen>
 

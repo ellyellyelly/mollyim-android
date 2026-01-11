@@ -40,6 +40,7 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.TextView.OnEditorActionListener
@@ -52,6 +53,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.getSystemService
 import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
@@ -4286,6 +4288,11 @@ class ConversationFragment :
     SendButton.ScheduledSendListener {
     override fun onClick(v: View) {
       sendMessage()
+
+      // needed to close WearOS IME
+      val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+      imm.hideSoftInputFromWindow(composeText.windowToken, 0)
+      composeText.clearFocus()
     }
 
     override fun onEditorAction(v: TextView, actionId: Int, event: KeyEvent?): Boolean {

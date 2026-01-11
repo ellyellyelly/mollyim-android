@@ -9,16 +9,16 @@
 
     <org.thoughtcrime.securesms.util.views.DarkOverflowToolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/signal_m3_toolbar_height"
         android:minHeight="@dimen/signal_m3_toolbar_height"
         android:theme="?attr/settingsToolbarStyle"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationContentDescription="@string/DSLSettingsToolbar__navigate_up"
-        app:navigationIcon="@drawable/symbol_arrow_start_24"
-        app:titleTextAppearance="@style/Signal.Text.TitleLarge"
+        app:titleTextAppearance="@style/Signal.Text.LabelSmall"
+        android:textAlignment="center"
         tools:title="@string/AndroidManifest__verify_safety_number" />
 
 
@@ -46,7 +46,7 @@
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/verify_view_pager"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="0dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -72,6 +72,7 @@
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
                 android:lineSpacingExtra="3sp"
+                android:visibility="gone"
                 android:text="@string/verify_display_fragment__pnp_verify_safety_numbers_explanation_with_s"
                 android:textColor="?attr/colorOnSurfaceVariant"
                 android:textColorLink="?attr/colorPrimary" />
@@ -99,7 +100,7 @@
     <FrameLayout
         android:id="@+id/verify_button_container"
         android:layout_width="match_parent"
-        android:layout_height="96dp"
+        android:layout_height="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent">
 
