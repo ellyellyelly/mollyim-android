@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -381,7 +382,8 @@ object Dialogs {
     ) {
       Surface(
         modifier = Modifier
-          .heightIn(min = 0.dp, max = getScreenHeight() - 200.dp)
+          .heightIn(min = 0.dp, max = getScreenHeight())
+          .widthIn(min = 0.dp, max = getScreenHeight() - 20.dp)
           .background(
             color = SignalTheme.colors.colorSurface2,
             shape = AlertDialogDefaults.shape
@@ -391,14 +393,14 @@ object Dialogs {
         Column {
           Text(
             text = title,
-            style = MaterialTheme.typography.titleLarge,
+            style = MaterialTheme.typography.titleSmall,
             modifier = Modifier
               .padding(top = 16.dp)
               .horizontalGutters()
           )
 
           LazyColumn(
-            modifier = Modifier.padding(top = 24.dp, bottom = 16.dp),
+            //modifier = Modifier.padding(top = 24.dp, bottom = 16.dp),
             state = rememberLazyListState(
               initialFirstVisibleItemIndex = max(selectedIndex, 0)
             )
@@ -428,7 +430,10 @@ object Dialogs {
                   modifier = Modifier.padding(end = 24.dp)
                 )
 
-                Text(text = labels[index])
+                Text(
+                  text = labels[index],
+                  style = MaterialTheme.typography.bodyMedium
+                )
               }
             }
           }
