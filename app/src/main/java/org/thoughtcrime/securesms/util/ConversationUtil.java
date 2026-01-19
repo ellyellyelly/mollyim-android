@@ -3,6 +3,7 @@ package org.thoughtcrime.securesms.util;
 import android.Manifest;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.pm.PackageManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -294,7 +295,7 @@ public final class ConversationUtil {
                      .setKey(getShortcutId(recipient.getId()))
                      .setName(recipient.getDisplayName(context))
                      .setIcon(AvatarUtil.getIconCompat(context, recipient))
-                     .setUri(recipient.isSystemContact() && Permissions.hasAny(context, Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS) ? recipient.getContactUri().toString() : null)
+                     .setUri(recipient.isSystemContact() && Permissions.hasAny(context, Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS) ? recipient.getContactUri().toString() : context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WATCH) ? "" : null)
                      .build();
   }
 
