@@ -231,6 +231,7 @@ android {
 
   buildTypes {
     getByName("debug") {
+      applicationIdSuffix = ".debug"
       isDefault = true
       isMinifyEnabled = false
       proguardFiles(
