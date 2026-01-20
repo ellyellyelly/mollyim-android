@@ -127,6 +127,7 @@
     <meta-data android:name="firebase_messaging_auto_init_enabled" android:value="false" />
     <meta-data android:name="android.webkit.WebView.MetricsOptOut" android:value="true" />
     <meta-data android:name="android.webkit.WebView.EnableSafeBrowsing" android:value="false" />
+    <meta-data android:name="com.google.android.wearable.notificationBridgeMode" android:value="NO_BRIDGING" />
 
     <meta-data
         android:name="android.telephony.PROPERTY_SATELLITE_DATA_OPTIMIZED"
