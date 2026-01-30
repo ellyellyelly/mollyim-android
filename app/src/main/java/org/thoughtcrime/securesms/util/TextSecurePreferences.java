@@ -756,7 +756,7 @@ public class TextSecurePreferences {
   }
 
   public static boolean isDynamicColorsEnabled(Context context) {
-    return getBooleanPreference(context, DYNAMIC_COLORS_ENABLED, false);
+    return getBooleanPreference(context, DYNAMIC_COLORS_ENABLED, true);
   }
 
   public static void setDynamicColorsEnabled(Context context, boolean enabled) {
