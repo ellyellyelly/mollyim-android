@@ -156,7 +156,7 @@ fun RegistrationScreen(
         mainContent()
       }
 
-      Surface(
+      /*Surface(
         shadowElevation = if (scrollState.canScrollForward) 8.dp else 0.dp,
         modifier = Modifier.fillMaxWidth()
       ) {
@@ -167,7 +167,7 @@ fun RegistrationScreen(
         ) {
           bottomContent()
         }
-      }
+      }*/
     }
   }
 }
