@@ -56,7 +56,7 @@ object Scaffolds {
     Scaffold(
       snackbarHost = snackbarHost,
       topBar = {
-        DefaultTopAppBar(
+        /*DefaultTopAppBar(
           title = title,
           titleContent = titleContent,
           onNavigationClick = onNavigationClick,
@@ -64,7 +64,7 @@ object Scaffolds {
           navigationContentDescription = navigationContentDescription,
           actions = actions,
           scrollBehavior = scrollBehavior
-        )
+        )*/
       },
       modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
       content = content
