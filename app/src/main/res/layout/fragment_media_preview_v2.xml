@@ -7,23 +7,24 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/media_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:focusable="true"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        android:clickable="false"
+        android:focusable="false"
         android:layoutDirection="ltr" />
 
     <LinearLayout
         android:id="@+id/media_preview_details_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_gravity="bottom"
         android:alpha="0"
         android:animateLayoutChanges="false"
         android:background="@color/media_preview_bar_background"
         android:gravity="bottom"
         android:orientation="vertical"
-        android:visibility="invisible"
+        android:visibility="gone"
         tools:visibility="visible">
 
         <org.thoughtcrime.securesms.mediapreview.caption.ExpandingCaptionView
@@ -53,6 +54,7 @@
         android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:background="@color/media_preview_bar_background"
         app:elevation="0dp">
 
