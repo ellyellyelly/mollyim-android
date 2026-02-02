@@ -10,9 +10,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.absoluteOffset
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
@@ -199,7 +202,7 @@ private fun AppSettingsContent(
   callbacks: Callbacks
 ) {
   val isRegisteredAndUpToDate by rememberUpdatedState(state.isRegisteredAndUpToDate())
-
+  val roundSpacer = 20.dp
   Scaffolds.Settings(
     title = stringResource(R.string.text_secure_normal__menu_settings),
     navigationContentDescription = stringResource(R.string.CallScreenTopBar__go_back),
@@ -213,7 +216,11 @@ private fun AppSettingsContent(
 
       LazyColumn(
         modifier = rememberStatusBarColorNestedScrollModifier()
+          .padding()
       ) {
+        item {
+          Spacer(Modifier.height(roundSpacer))
+        }
         item {
           BioRow(
             self = self,
@@ -473,6 +480,9 @@ private fun AppSettingsContent(
             )
           }
         }
+        item {
+          Spacer(Modifier.height(roundSpacer))
+        }
       }
     }
   }
@@ -525,7 +535,7 @@ private fun BioRow(
       )
       .horizontalGutters()
   ) {
-    Box {
+    /*Box {
       AvatarImage(
         recipient = self.recipient,
         modifier = Modifier
@@ -542,7 +552,7 @@ private fun BioRow(
             .align(Alignment.BottomEnd)
         )
       }
-    }
+    }*/
 
     Column(
       modifier = Modifier
