@@ -49,11 +49,11 @@ class BannerManager @JvmOverloads constructor(
           val bannerState by banner.dataFlow.collectAsStateWithLifecycle(initialValue = null)
 
           bannerState?.let { model ->
-            SignalTheme {
+            /*SignalTheme {
               Box {
                 banner.DisplayBanner(model, PaddingValues(horizontal = 12.dp, vertical = 8.dp))
               }
-            }
+            }*/
             onNewBannerShownListener()
           } ?: onNoBannerShownListener()
         }
