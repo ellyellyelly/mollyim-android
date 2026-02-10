@@ -134,14 +134,7 @@ private fun RegisterLinkDeviceQrScreen(
   RegistrationScreen(
     title = "Scan this code with your phone",
     subtitle = null,
-    bottomContent = {
-      TextButton(
-        onClick = onCancel,
-        modifier = Modifier.align(Alignment.Center)
-      ) {
-        Text(text = stringResource(android.R.string.cancel))
-      }
-    }
+    bottomContent = null
   ) {
     FlowRow(
       horizontalArrangement = Arrangement.spacedBy(space = 4.dp, alignment = Alignment.CenterHorizontally),

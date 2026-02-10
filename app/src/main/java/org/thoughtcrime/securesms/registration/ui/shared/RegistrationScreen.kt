@@ -63,7 +63,7 @@ fun RegistrationScreen(
 fun RegistrationScreen(
   title: String,
   subtitle: AnnotatedString?,
-  bottomContent: @Composable BoxScope.() -> Unit,
+  bottomContent: @Composable (BoxScope.() -> Unit)?,
   mainContent: @Composable ColumnScope.() -> Unit
 ) {
   RegistrationScreen(
@@ -105,7 +105,7 @@ fun RegistrationScreenTitleSubtitle(
 fun RegistrationScreen(
   menu: @Composable (ColumnScope.() -> Unit)?,
   topContent: @Composable ColumnScope.() -> Unit,
-  bottomContent: @Composable BoxScope.() -> Unit,
+  bottomContent: @Composable (BoxScope.() -> Unit)?,
   mainContent: @Composable ColumnScope.() -> Unit
 ) {
   Surface {
@@ -160,13 +160,16 @@ fun RegistrationScreen(
         shadowElevation = if (scrollState.canScrollForward) 8.dp else 0.dp,
         modifier = Modifier.fillMaxWidth()
       ) {
-        Box(
-          modifier = Modifier
-            .padding(top = 8.dp, bottom = 24.dp)
-            .horizontalGutters()
-        ) {
-          bottomContent()
+        if (bottomContent != null) {
+          Box(
+            modifier = Modifier
+              .padding(top = 8.dp, bottom = 24.dp)
+              .horizontalGutters()
+          ) {
+            bottomContent()
+          }
         }
+
       }
     }
   }
